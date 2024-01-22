@@ -1,0 +1,42 @@
+--- Les bonnes pratiques dans la conception d'un API ---
+
+- Utiliser le format JSON : Le format à préconiser pour recevoir et retourner de l'information de notre api est le format JSON. C'est de loin le plus utilisé aujourd'hui et la grande majorité des langages de programmation on des fonctions natives pour le manipuler.
+
+- Utiliser des noms au lieu de verbes pour les routes : Quand on nomme les routes de notre api, on ne devrait pas utiliser de verbe. L'emploi d'un nom significatif est à privilégier. Par exemple notre api nous permet de retourner une liste d'utilisateurs ou d'en créer un, on serait tenté d'utiliser comme nom de route
+	https://monApi/getUtilisateurs
+	https://monApi/createUtilisateurs
+==> Mais il est préférable d'utiliser dans les deux cas
+	https://monApi/utilisateurs
+
+Une même route peut avoir plus d'une fonctionnalité, c'est la méthode HTTP qui nous permet de les différenciées.
+
+- Utiliser la méthode HTTP pour décrire la fonctionnalité de la ressource : En lien avec le point suivant, utilisez la bonne méthode HTTP pour indiquer quelle est la fonctionnalité de la route. Il existe une méthode qui correspondante à chaque opération CRUD.
+
+Opération dans la BD	Méthode http
+Lire			GET
+Insérer			POST
+Modifier		PUT
+Modifier partiellement	PATCH
+Supprimer		DELETE
+
+- Utiliser les codes de statut HTTP : Dans la réponse de la requête à votre API utilisez une code de statut HTTP approprié à la situation.
+
+200 - 299 indique un succès
+400 - 499 Il y a eu une erreur côté client
+500 - 599 Il y a eu une erreur côté serveur
+
+==> Voir le tableau sur le cours
+
+- Pagination : Il n'est pas rare qu'une ressource comporte plusieurs centaines sinon milliers d'enregistrements. On devrait permettre au client de pouvoir sélectionner seulement une partie des enregistrements en définissant un point de départ (offset) et un nombre d'enregistrement (limit). Si on utilise la pagination, on devrait définir des valeurs par défaut au paramètre offset et limit (généralement offset sera égale à 0 pour le premier enregistrement).
+
+Exemple :
+
+/livres?limit=50&offset=100 
+==> En partant du centième enregistrement, affiche les 50 livres suivants.
+
+Pour faciliter le traitement des données, on devrait ajouter dans la réponse le nombre total d'enregistrements ainsi que les valeurs de limit et offset.
+
+Une autre technique est d'avoir un nombre d'enregistrement fixe par page et de seulement permettre à l'usager de choisir la page qu'il veut afficher. Exemple, on décide d'afficher 30 enregistrements par page, l'url suivant va afficher les enregistrement 61 à 90 :
+/livres?page=3
+
+On peut bien sur combiner les deux méthodes comme c'est souvent le cas dans les sites d'achats en lignes (On peut choisir la page et le nombre d'articles affichés par page).

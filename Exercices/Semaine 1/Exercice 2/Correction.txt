@@ -4,9 +4,15 @@ Ouvrir un terminal
 - code .
 
 Ouvrir le terminal de visual code
+A chaque fois qu'on fait un nouveau projet on doit faire les installations
 
 Taper : 
 - npm init -y
+- npm install dotenv
+
+
+Pour lancer le serveur : 
+node [nomFichier].js
 
 
 
