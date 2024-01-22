@@ -1,0 +1,48 @@
+Voir le cours :
+https://services-web-victo.github.io/notes_de_cours/api/json/
+
+- Comprendre les objets : 
+	{
+	    "cle1" : "valeur1",
+	    "cle2" : "valeur2"
+	}
+
+- Comprendre les tableaux
+	["valeur1", "valeur2"]
+
+- On peut mélanger les deux : 
+	{
+	 "cle1" : [
+	        "valeur1", 
+	        "valeur2"
+	    ],
+   	 "cle2" : "valeur2"
+	}
+
+- Liste des valeurs possibles
+	String : du texte entouré de guillemets "
+	Nombre : sans les guillemets, on peut utiliser les décimales avec le point et les exposants avec le caractère e.
+	objet : comme vu plus haut, liste de clé/valeur entourées par des accolades
+	tableau : liste d'items entourés de crochet
+	booléan : utilisez true ou false sans guillemets et en minuscule
+	valeur nulle : null sans guillemets et en minuscule
+	LES DATES NE SONT PAS SUPPORTEES
+
+- Pour savoir si le JSON est bien écrit : 
+	- https://jsonlint.com/
+
+
+- JSON.parse() : Les données qu'on reçoit au format JSON sont sous forme de texte. Pour les utiliser facilement en JavaScript on va les convertir en objet avec la fonction JSON.parse().
+	// Objet JavaScript à convertir en JSON
+	const usager = {prenom: "Mathieu", nom: "Frechette", age:43, cours:["Services Web", "Conception de systèmes"]};
+	// Convertir l'objet JavaScript en JSON avec JSON.stringify()
+	const jsToJSON = JSON.stringify(usager);
+	
+	console.log('reponseJson: ', jsToJSON); // {"prenom":"Mathieu","nom":"Frechette","age":43,"cours":["Services Web","Conception de systèmes"]}
+	
+	// Convertir le JSON en objet JavaScript avec JSON.parse()
+	const objJS = JSON.parse(jsToJSON);
+	
+	console.log('Nom: ', objJS.prenom + ' ' + objJS.nom); // Nom: Mathieu Frechette
+
+

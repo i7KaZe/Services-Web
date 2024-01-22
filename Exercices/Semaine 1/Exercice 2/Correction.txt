@@ -1,0 +1,19 @@
+Aller sur le dossier voulu
+
+Ouvrir un terminal
+- code .
+
+Ouvrir le terminal de visual code
+
+Taper : 
+- npm init -y
+
+
+
+
+Créer un fichier .env pour mettre les constantes que nous voulons
+- PORT = 3000
+!!! Ne pas mettre de ; à la fin !!!
+Mettre ces lignes dans le fichiers où l'on a besoin de valeurs de .env
+- require('dotenv').config();
+
